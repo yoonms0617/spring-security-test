@@ -1,6 +1,6 @@
 package com.example.springsecuritytest.member.service;
 
-import com.example.springsecuritytest.common.error.exception.ErrorCode;
+import com.example.springsecuritytest.common.error.exception.ErrorType;
 import com.example.springsecuritytest.member.domain.Member;
 import com.example.springsecuritytest.member.dto.MemberSignupRequest;
 import com.example.springsecuritytest.member.exception.DuplicatEmailException;
@@ -25,7 +25,7 @@ public class MemberService {
     @Transactional
     public void signup(MemberSignupRequest request) {
         if (memberRepository.existsByEmail(request.getEmail())) {
-            throw new DuplicatEmailException(ErrorCode.DUPLICATE_EMAIL);
+            throw new DuplicatEmailException(ErrorType.DUPLICATE_EMAIL);
         }
         String encoded = passwordEncoder.encode(request.getPassword());
         Member member = Member.builder()

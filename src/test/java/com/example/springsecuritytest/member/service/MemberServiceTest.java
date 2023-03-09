@@ -5,6 +5,7 @@ import com.example.springsecuritytest.member.dto.MemberSignupRequest;
 import com.example.springsecuritytest.member.exception.DuplicatEmailException;
 import com.example.springsecuritytest.member.repository.MemberRepository;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -38,6 +39,7 @@ class MemberServiceTest {
     private MemberService memberService;
 
     @Test
+    @DisplayName("회원가입을 한다.")
     void member_signup_test() {
         Member mockMember = createMockMember();
         MemberSignupRequest mockMemberSignupRequest = createMockMemberSignupRequest();
@@ -55,6 +57,7 @@ class MemberServiceTest {
     }
 
     @Test
+    @DisplayName("회원가입시 이메일이 중복되면 예외가 발생한다.")
     void member_signup_duplicate_email_test() {
         MemberSignupRequest mockMemberSignupRequest = createMockMemberSignupRequest();
         given(memberRepository.existsByEmail(any())).willReturn(true);

@@ -1,6 +1,6 @@
 package com.example.springsecuritytest.common.error.dto;
 
-import com.example.springsecuritytest.common.error.exception.ErrorCode;
+import com.example.springsecuritytest.common.error.exception.ErrorType;
 
 import lombok.Getter;
 
@@ -17,15 +17,15 @@ public class ErrorResponse {
 
     private final String path;
 
-    private ErrorResponse(ErrorCode errorCode, String path) {
+    private ErrorResponse(ErrorType errorType, String path) {
         this.timeStamp = LocalDateTime.now();
-        this.status = errorCode.getStatus();
-        this.message = errorCode.getMessage();
+        this.status = errorType.getStatus();
+        this.message = errorType.getMessage();
         this.path = path;
     }
 
-    public static ErrorResponse of(ErrorCode errorCode, String path) {
-        return new ErrorResponse(errorCode, path);
+    public static ErrorResponse of(ErrorType errorType, String path) {
+        return new ErrorResponse(errorType, path);
     }
 
 }

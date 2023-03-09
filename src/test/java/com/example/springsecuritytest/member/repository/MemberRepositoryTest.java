@@ -3,6 +3,7 @@ package com.example.springsecuritytest.member.repository;
 import com.example.springsecuritytest.common.config.JpaAuditConfig;
 import com.example.springsecuritytest.member.domain.Member;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ class MemberRepositoryTest {
     private MemberRepository memberRepository;
 
     @Test
+    @DisplayName("회원을 저장한다.")
     void member_save_test() {
         Member mockMember = createMockMember();
 
@@ -32,6 +34,7 @@ class MemberRepositoryTest {
     }
 
     @Test
+    @DisplayName("식별자로 회원을 조회한다.")
     void member_findById_test() {
         Member mockMember = createMockMember();
         memberRepository.save(mockMember);
@@ -42,6 +45,7 @@ class MemberRepositoryTest {
     }
 
     @Test
+    @DisplayName("이메일로 회원을 조회한다.")
     void member_findByEmail_test() {
         Member mockMember = createMockMember();
         memberRepository.save(mockMember);
@@ -52,6 +56,7 @@ class MemberRepositoryTest {
     }
 
     @Test
+    @DisplayName("이메일의 존재 여부를 확인한다.")
     void member_existsByEmail_test() {
         Member mockMember = createMockMember();
         memberRepository.save(mockMember);
